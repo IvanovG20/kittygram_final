@@ -2,8 +2,8 @@ name: Main Kittygram workflow
 
 on:
   push:
-    - main
-
+    branches:
+      - main
 
 jobs:
   tests:
