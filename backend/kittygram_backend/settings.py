@@ -11,9 +11,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$')
 
-DEBUG = env.bool('DEBUG')
+DEBUG = env.bool('DEBUG', default=True)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list(
+    'ALLOWED_HOSTS',
+    default='158.160.72.72, 127.0.0.1, localhost, kiiityyygraaammm.webhop.me'
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
