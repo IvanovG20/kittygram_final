@@ -1,26 +1,29 @@
-#  Как работать с репозиторием финального задания
+#  Веб-проект Kittygram
+## Описание проекта
 
-## Что нужно сделать
+Сайт с возможностью публикации котов и кошек, их дней рождений и достижений
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+## Технологии
+- Python 3.9
+- Django 3.2.3
+- Django REST Framework 3.12.4
 
-## Как проверить работу с помощью автотестов
+## Запуск проекта
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
-```
+1) Клонируйте репозиторий с github
+  git clone git@github.com:tagiil7/kittygram_final.git
+2) Запустите проект командой
+  sudo docker compose -f docker-compose.yml up
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+## Сбор статики и применение миграций
+После запуска проекта нужно собрать статику и миграции
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+sudo docker compose -f (file_name_docker-compose.yml) exec backend python manage.py migrate
 
-## Чек-лист для проверки перед отправкой задания
+sudo docker compose -f (file_name_docker-compose.yml) exec backend python manage.py collectstatic
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+sudo docker compose -f (file_name_docker-compose.yml) exec backend cp -r /app/collected_static/. /static/static/
+
+Проект будет доступен по адресу
+http://localhost:9000/
+
