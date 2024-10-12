@@ -11,7 +11,7 @@
 ## Запуск проекта
 
 1) Клонируйте репозиторий с github
-  git clone git@github.com:tagiil7/kittygram_final.git
+  git clone git@github.com:IvanovG20/kittygram_final.git
 2) Запустите проект командой
   sudo docker compose -f docker-compose.yml up
 
